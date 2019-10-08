@@ -12,21 +12,40 @@ namespace Slagsmål.Klasser
 
         public string name = "";
 
-        private int amount = 0;
+        private int End = 0;
 
+        /*public Fighter(string name)
+        {
+            name = Console.ReadLine();
+            Console.WriteLine("Du namngav kämpen till " + name);
+        }*/
+
+        public void FighterName()
+        {
+            End++;
+            if (End == 1)
+            {
+                name = Console.ReadLine();
+                Console.WriteLine("Du namngav kämpen till " + name);
+            }
+            else
+            {
+                Console.WriteLine(name + "vann!" );
+            }
+            
+        }                  
         public int Attack()
         {
             Random generator = new Random();
 
             int damage = generator.Next(10, 21);
 
-            amount = damage;
-
-            return amount;
+            return damage;
         }
 
         public void Hurt(int amount)
         {
+            Console.WriteLine(name + "tog " + amount + " skada och har nu " + hp + "hp kvar.");
             hp = hp - amount;
         }
 
