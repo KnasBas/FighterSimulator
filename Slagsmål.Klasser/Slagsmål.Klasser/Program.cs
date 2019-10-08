@@ -10,40 +10,77 @@ namespace Slagsmål.Klasser
     {
         static void Main(string[] args)
         {
-            Fighter player1 = new Fighter();
-            Fighter player2 = new Fighter();
+            int retry = 0;
 
-            Console.WriteLine("Namnge de två kämparna");
-            Console.ReadKey();
-            Console.WriteLine("Kämpe 1");
-            player1.FighterName();
-            Console.WriteLine("Kämpe 2");
-            player2.FighterName();
-            Console.ReadKey();
-            Console.WriteLine("Nu börjar striden!");
-            Console.ReadKey();
 
-            while (player1.isAlive() == true && player2.isAlive() == true)
+            while (retry == 0)
             {
-                int h1 = player1.Attack();
-                player2.Hurt(h1);
-                player2.GetHp();
-                player2.isAlive();
+                Fighter playerOne = new Fighter();
+                Fighter playerTwo = new Fighter();
 
-                int h2 = player2.Attack();
-                player1.Hurt(h2);
-                player1.GetHp();
-                player1.isAlive();                
+                Console.WriteLine("Namnge de två kämparna");
+                Console.Write("Kämpe 1: ");
+                playerOne.FighterName();
+                Console.Write("Kämpe 2: ");
+                playerTwo.FighterName();
+                Console.Clear();
+                Console.ReadKey();
+                Console.WriteLine("Nu börjar striden!");
+                Console.ReadKey();
+
+                while (playerOne.isAlive() == true && playerTwo.isAlive() == true)
+                {                
+
+                    int h1 = playerOne.Attack();
+                    playerTwo.Hurt(h1);
+                    Console.ReadKey();
+
+                    playerTwo.GetHp();
+                    playerTwo.isAlive();
+
+                    int h2 = playerTwo.Attack();
+                    playerOne.Hurt(h2);
+                    Console.ReadKey();
+
+                    playerOne.GetHp();
+                    playerOne.isAlive();
+
+                }
+
+                if (playerOne.isAlive() == true && playerTwo.isAlive() == false)
+                {
+                    playerOne.FighterName();
+                }
+                else if (playerOne.isAlive() == false && playerTwo.isAlive() == true)
+                {
+                    playerTwo.FighterName();
+                }
+
+                Console.WriteLine("Vill du köra igen (ja/nej) ?");
+                Console.Write("Svar: ");
+
+                string answer = Console.ReadLine().ToLower();
+
+                while (answer != "ja" && answer != "nej")
+                {
+                    Console.WriteLine("Skriv ett giltigt svar (ja/nej)");
+                    answer = Console.ReadLine().ToLower();
+                }
+
+                if (answer == "ja")
+                {
+                    Console.Clear();
+                    retry = 0;
+
+                }
+
+                else if (answer == "nej")
+                {
+                    retry = 1;
+                }
+
             }
 
-            if (player1.isAlive() == true && player2.isAlive() == false)
-            {
-                player1.FighterName();
-            }
-            else
-            {
-                player2.FighterName();
-            }
         }
     }
 }

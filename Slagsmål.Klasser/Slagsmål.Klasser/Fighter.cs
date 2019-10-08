@@ -14,52 +14,48 @@ namespace Slagsmål.Klasser
 
         private int End = 0;
 
-        /*public Fighter(string name)
-        {
-            name = Console.ReadLine();
-            Console.WriteLine("Du namngav kämpen till " + name);
-        }*/
-
         public void FighterName()
         {
-            End++;
             if (End == 1)
             {
-                name = Console.ReadLine();
-                Console.WriteLine("Du namngav kämpen till " + name);
+                Console.WriteLine(name + " vann!");
+                Console.WriteLine("Grattis!");
             }
             else
             {
-                Console.WriteLine(name + "vann!" );
-            }
-            
+                name = Console.ReadLine();
+                Console.WriteLine("Du namngav kämpen till " + name);
+                End++;
+            }        
         }                  
         public int Attack()
         {
             Random generator = new Random();
 
-            int damage = generator.Next(10, 21);
+            int damage = generator.Next(10, 26);
 
             return damage;
         }
 
         public void Hurt(int amount)
         {
-            Console.WriteLine(name + "tog " + amount + " skada och har nu " + hp + "hp kvar.");
             hp = hp - amount;
+
+            if (hp < 0)
+            {
+                hp = 0;
+            }
+
+            Console.WriteLine(name + " tog " + amount + " skada och har nu " + hp + "hp kvar.");
         }
 
         public bool isAlive()
         {
             bool Alive = false;
 
-            if (hp <= 1)
+            if (hp >= 1)
             {
                 Alive = true;
-            }
-            else
-            {
-                Alive = false;
             }
 
             return Alive;
@@ -67,7 +63,6 @@ namespace Slagsmål.Klasser
         
         public int GetHp()
         {
-            Console.WriteLine(hp);
             return hp;
         }
     }
