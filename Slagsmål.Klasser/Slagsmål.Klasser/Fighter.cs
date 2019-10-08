@@ -12,28 +12,43 @@ namespace Slagsmål.Klasser
 
         public string name = "";
 
-        public void Attack()
-        {
+        private int amount = 0;
 
+        public int Attack()
+        {
+            Random generator = new Random();
+
+            int damage = generator.Next(10, 21);
+
+            amount = damage;
+
+            return amount;
         }
 
-        public void Hurt(int ammount)
+        public void Hurt(int amount)
         {
-
+            hp = hp - amount;
         }
 
         public bool isAlive()
         {
+            bool Alive = false;
 
+            if (hp <= 1)
+            {
+                Alive = true;
+            }
+            else
+            {
+                Alive = false;
+            }
 
-            return true; //tillfällig
+            return Alive;
         }
         
         public int GetHp()
         {
-
-
-
+            Console.WriteLine(hp);
             return hp;
         }
     }

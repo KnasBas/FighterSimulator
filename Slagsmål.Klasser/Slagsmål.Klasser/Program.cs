@@ -10,6 +10,21 @@ namespace Slagsmål.Klasser
     {
         static void Main(string[] args)
         {
+            Fighter player = new Fighter();
+
+            Fighter enemy = new Fighter();
+
+            while(player.isAlive() == true && enemy.isAlive() == true)
+            {
+
+
+
+
+
+            }
+
+
+
         }
     }
 }
