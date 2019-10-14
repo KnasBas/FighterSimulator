@@ -16,15 +16,17 @@ namespace Slagsmål.Klasser
             while (retry == 0)
             {
                 Fighter playerOne = new Fighter();
-                Fighter playerTwo = new Fighter();
+                Fighter2 playerTwo = new Fighter2();
+
+                playerOne.SetHP();
+                playerTwo.SetHP();
 
                 Console.WriteLine("Namnge de två kämparna");
                 Console.Write("Kämpe 1: ");
                 playerOne.FighterName();
-                Console.Write("Kämpe 2: ");
+                //Console.Write("Kämpe 2: ");
                 playerTwo.FighterName();
                 Console.Clear();
-                Console.ReadKey();
                 Console.WriteLine("Nu börjar striden!");
                 Console.ReadKey();
 
