@@ -57,6 +57,10 @@ namespace Slagsmål.Klasser
             {
                 Alive = true;
             }
+            else if (hp <= 0) 
+            {
+                Alive = false;
+            }
 
             return Alive;
         }

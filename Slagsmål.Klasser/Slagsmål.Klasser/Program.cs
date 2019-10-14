@@ -29,22 +29,22 @@ namespace Slagsmål.Klasser
                 Console.ReadKey();
 
                 while (playerOne.isAlive() == true && playerTwo.isAlive() == true)
-                {                
-
+                {
+                    playerTwo.GetHp();
+                    playerTwo.isAlive();
                     int h1 = playerOne.Attack();
                     playerTwo.Hurt(h1);
                     Console.ReadKey();
-
                     playerTwo.GetHp();
                     playerTwo.isAlive();
-
+                    ///////////////////
+                    playerOne.GetHp();
+                    playerOne.isAlive();
                     int h2 = playerTwo.Attack();
                     playerOne.Hurt(h2);
                     Console.ReadKey();
-
                     playerOne.GetHp();
-                    playerOne.isAlive();
-
+                    playerOne.isAlive();                                
                 }
 
                 if (playerOne.isAlive() == true && playerTwo.isAlive() == false)
@@ -55,6 +55,11 @@ namespace Slagsmål.Klasser
                 {
                     playerTwo.FighterName();
                 }
+                else
+                {
+                    Console.WriteLine("oavgjort");
+                }
+                
 
                 Console.WriteLine("Vill du köra igen (ja/nej) ?");
                 Console.Write("Svar: ");
