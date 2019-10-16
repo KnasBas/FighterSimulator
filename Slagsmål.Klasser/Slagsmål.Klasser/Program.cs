@@ -10,43 +10,36 @@ namespace Slagsmål.Klasser
     {
         static void Main(string[] args)
         {
-            int retry = 0;
-
+            int retry = 0; //retry int:en används senare i programmet för att spelaren ska kunna välja att starta om eller ej.
 
             while (retry == 0)
             {
-                Fighter playerOne = new Fighter();
+                Fighter playerOne = new Fighter(); //Två lika klasser varav figther 2 ärver från fighter
                 Fighter2 playerTwo = new Fighter2();
-
                 playerOne.SetHP();
                 playerTwo.SetHP();
 
-                Console.WriteLine("Namnge de två kämparna");
+                Console.WriteLine("Namnge din kämpe");
                 Console.Write("Kämpe 1: ");
                 playerOne.FighterName();
-                //Console.Write("Kämpe 2: ");
                 playerTwo.FighterName();
                 Console.Clear();
                 Console.WriteLine("Nu börjar striden!");
                 Console.ReadKey();
 
-                while (playerOne.isAlive() == true && playerTwo.isAlive() == true)
+                while (playerOne.isAlive() == true && playerTwo.isAlive() == true) //While-loopen som håller striden igång med deras metoder som körs tills den ena dör.
                 {
-                    playerTwo.GetHp();
-                    playerTwo.isAlive();
                     int h1 = playerOne.Attack();
                     playerTwo.Hurt(h1);
                     Console.ReadKey();
                     playerTwo.GetHp();
-                    playerTwo.isAlive();
+                    if (!playerTwo.isAlive()) break;
                     ///////////////////
-                    playerOne.GetHp();
-                    playerOne.isAlive();
                     int h2 = playerTwo.Attack();
                     playerOne.Hurt(h2);
                     Console.ReadKey();
                     playerOne.GetHp();
-                    playerOne.isAlive();                                
+                    if (!playerOne.isAlive()) break;                                 
                 }
 
                 if (playerOne.isAlive() == true && playerTwo.isAlive() == false)

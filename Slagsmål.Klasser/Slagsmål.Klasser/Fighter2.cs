@@ -38,9 +38,9 @@ namespace Slagsmål.Klasser
 
                 Random generator = new Random();
 
-                armour = generator.Next(5, 11); //slumpa mellan 0 - 10
+                armour = generator.Next(5, 11); //slumpa mellan 5 - 10
 
-                Console.WriteLine("Denna kämpen börjar med " + armour + " armour");
+                Console.WriteLine("Denna kämpe börjar med " + armour + " armour");
 
                 weapon = generator.Next(3); // 1/3 chans
 

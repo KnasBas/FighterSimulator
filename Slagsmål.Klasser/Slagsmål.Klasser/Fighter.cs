@@ -28,7 +28,7 @@ namespace Slagsmål.Klasser
             else
             {
                 name = Console.ReadLine();
-                Console.WriteLine("Du namngav kämpen till " + name);
+                Console.WriteLine("Du namngav kämpen till " + name + " och hen kommer börja med " + hp + "hp");
 
                 Random generator = new Random();
 
