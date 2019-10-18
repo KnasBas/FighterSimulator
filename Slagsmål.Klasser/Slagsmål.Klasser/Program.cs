@@ -21,53 +21,48 @@ namespace Slagsmål.Klasser
 
                 Console.WriteLine("Namnge din kämpe");
                 Console.Write("Kämpe 1: ");
-                playerOne.FighterName();
-                playerTwo.FighterName();
+                playerOne.FighterName(); //Klass metoden körs och därmed namnger kämpen
+                playerTwo.FighterName(); //Här körs FighterName från Fighter2 som använder en slumpgenerator för namnen
                 Console.Clear();
                 Console.WriteLine("Nu börjar striden!");
                 Console.ReadKey();
 
                 while (playerOne.isAlive() == true && playerTwo.isAlive() == true) //While-loopen som håller striden igång med deras metoder som körs tills den ena dör.
                 {
-                    int h1 = playerOne.Attack();
-                    playerTwo.Hurt(h1);
+                    int h1 = playerOne.Attack(); //Attack metoden lagras
+                    playerTwo.Hurt(h1); //h1 lagrar värdet från Attack och används inom Hurt för att göra rätt mängd damage
                     Console.ReadKey();
                     playerTwo.GetHp();
-                    if (!playerTwo.isAlive()) break;
+                    if (!playerTwo.isAlive()) break; //Break:en används eftersom ifall bool:en är false måste while-loopen avbrytas
                     ///////////////////
-                    int h2 = playerTwo.Attack();
-                    playerOne.Hurt(h2);
+                    int h2 = playerTwo.Attack(); //Samma principer som innan
+                    playerOne.Hurt(h2); //Samma principer som innan
                     Console.ReadKey();
-                    playerOne.GetHp();
-                    if (!playerOne.isAlive()) break;                                 
+                    playerOne.GetHp(); //Samma principer som innan
+                    if (!playerOne.isAlive()) break; //Samma principer som innan                         
                 }
 
-                if (playerOne.isAlive() == true && playerTwo.isAlive() == false)
+                if (playerOne.isAlive() == true && playerTwo.isAlive() == false) //Här testats argument för vinnaren, här vinner PlayerOne
                 {
-                    playerOne.FighterName();
+                    playerOne.FighterName(); //FighterName har nu uppdaterats efter första gången den kördes och skriver ut vinnaren.
                 }
-                else if (playerOne.isAlive() == false && playerTwo.isAlive() == true)
+                else if (playerOne.isAlive() == false && playerTwo.isAlive() == true) //Här vinner PlayerTwo
                 {
-                    playerTwo.FighterName();
+                    playerTwo.FighterName(); // -||-
                 }
-                else
-                {
-                    Console.WriteLine("oavgjort");
-                }
-                
 
-                Console.WriteLine("Vill du köra igen (ja/nej) ?");
+                Console.WriteLine("Vill du köra igen (ja/nej) ?"); //Frågar ifall man vill spela igen
                 Console.Write("Svar: ");
 
-                string answer = Console.ReadLine().ToLower();
+                string answer = Console.ReadLine().ToLower(); //ToLower för felsökning
 
-                while (answer != "ja" && answer != "nej")
+                while (answer != "ja" && answer != "nej") //Felsökning
                 {
                     Console.WriteLine("Skriv ett giltigt svar (ja/nej)");
                     answer = Console.ReadLine().ToLower();
                 }
 
-                if (answer == "ja")
+                if (answer == "ja") //enkla if-satser för att se om kravet uppfylls för att starta om spelet
                 {
                     Console.Clear();
                     retry = 0;
@@ -76,8 +71,29 @@ namespace Slagsmål.Klasser
 
                 else if (answer == "nej")
                 {
-                    retry = 1;
+                    retry = 1; //retry uppdateras och spelet avslutas
                 }
+
+                /* bool playerOneisAlive = playerOne.isAlive();
+
+                bool playerTwoisAlive = playerTwo.isAlive();
+
+                while(playerOneisAlive == true && playerTwoisAlive == true)
+                {
+                    playerTwoisAlive = playerTwo.isAlive();
+                    int h1 = playerOne.Attack(); //Attack metoden lagras
+                    playerTwo.Hurt(h1);
+                    Console.ReadKey();
+                    playerTwo.GetHp();
+                    playerTwoisAlive = playerTwo.isAlive();
+
+                    playerOneisAlive = playerOne.isAlive();
+                    int h2 = playerTwo.Attack(); //Samma principer som innan
+                    playerOne.Hurt(h2); //Samma principer som innan
+                    Console.ReadKey();
+                    playerOne.GetHp();
+                    playerOneisAlive = playerOne.isAlive();
+                }*/
 
             }
 

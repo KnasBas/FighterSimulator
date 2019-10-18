@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Slagsmål.Klasser
 {
-    class Fighter2 : Fighter
+    class Fighter2 : Fighter //Ärver från Fighter
     {
-        public new void SetHP()
+        public new void SetHP() //En ny SetHp med läger hp värden, dock sammar principer
         {
             Random generator = new Random();
 
@@ -25,22 +25,19 @@ namespace Slagsmål.Klasser
             {
                 List<string> names = new List<string> {"Bert", "Benji", "Knas", "Martinis" };
 
-                Random nameGen = new Random();
+                Random nameGen = new Random(); //Istället för fightsimv1 så införde jag en namn generator som slumpar fram namnet för motståndaren
 
-                int i = nameGen.Next(4);
+                int i = nameGen.Next(4); //generator mellan 0-3, samma index som listan names
 
-                name = names[i];
-
-                //name = Console.ReadLine();
-                //Console.WriteLine("Du namngav kämpen till " + name);
+                name = names[i]; //här får name ett namn av names
 
                 Console.WriteLine("Kämpen som du möter heter " + name);
 
                 Random generator = new Random();
 
-                armour = generator.Next(5, 11); //slumpa mellan 5 - 10
+                armour = generator.Next(5, 11); //slumpa mellan 5 - 10, ett högre armour värde än main spelaren
 
-                Console.WriteLine("Denna kämpe börjar med " + armour + " armour");
+                Console.WriteLine("Denna kämpe börjar med " + armour + " armour och börjar med " + hp + "hp");
 
                 weapon = generator.Next(3); // 1/3 chans
 
