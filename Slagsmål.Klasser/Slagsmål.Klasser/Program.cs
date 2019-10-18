@@ -29,14 +29,14 @@ namespace Slagsmål.Klasser
 
                 while (playerOne.isAlive() == true && playerTwo.isAlive() == true) //While-loopen som håller striden igång med deras metoder som körs tills den ena dör.
                 {
-                    int h1 = playerOne.Attack(); //Attack metoden lagras
-                    playerTwo.Hurt(h1); //h1 lagrar värdet från Attack och används inom Hurt för att göra rätt mängd damage
+                    int attack1 = playerOne.Attack(); //Attack metoden lagras
+                    playerTwo.Hurt(attack1); //h1 lagrar värdet från Attack och används inom Hurt för att göra rätt mängd damage
                     Console.ReadKey();
                     playerTwo.GetHp();
                     if (!playerTwo.isAlive()) break; //Break:en används eftersom ifall bool:en är false måste while-loopen avbrytas
                     ///////////////////
-                    int h2 = playerTwo.Attack(); //Samma principer som innan
-                    playerOne.Hurt(h2); //Samma principer som innan
+                    int attack2 = playerTwo.Attack(); //Samma principer som innan
+                    playerOne.Hurt(attack2); //Samma principer som innan
                     Console.ReadKey();
                     playerOne.GetHp(); //Samma principer som innan
                     if (!playerOne.isAlive()) break; //Samma principer som innan                         
@@ -73,30 +73,7 @@ namespace Slagsmål.Klasser
                 {
                     retry = 1; //retry uppdateras och spelet avslutas
                 }
-
-                /* bool playerOneisAlive = playerOne.isAlive();
-
-                bool playerTwoisAlive = playerTwo.isAlive();
-
-                while(playerOneisAlive == true && playerTwoisAlive == true)
-                {
-                    playerTwoisAlive = playerTwo.isAlive();
-                    int h1 = playerOne.Attack(); //Attack metoden lagras
-                    playerTwo.Hurt(h1);
-                    Console.ReadKey();
-                    playerTwo.GetHp();
-                    playerTwoisAlive = playerTwo.isAlive();
-
-                    playerOneisAlive = playerOne.isAlive();
-                    int h2 = playerTwo.Attack(); //Samma principer som innan
-                    playerOne.Hurt(h2); //Samma principer som innan
-                    Console.ReadKey();
-                    playerOne.GetHp();
-                    playerOneisAlive = playerOne.isAlive();
-                }*/
-
             }
-
         }
     }
 }

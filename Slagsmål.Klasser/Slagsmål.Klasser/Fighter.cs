@@ -61,9 +61,9 @@ namespace Slagsmål.Klasser
                                                     //En slump generator för att slumpa mängden damage som kämparna ka utföra.
             int damage = generator.Next(10, 26);
 
-            if (weapon == 2) //Notera att ifall min tidigare slump generator för weapon "rullade" en två kommer kämpen att ha tillgång till ett vapen som gör dubbelt med damage
+            if (weapon == 2 && damage <= 15) //Notera att ifall min tidigare slump generator för weapon "rullade" en två kommer kämpen att ha tillgång till ett vapen som gör dubbelt med damage
             {
-                damage = damage * 2;
+                damage = damage * 2;         
             }
 
             return damage; //returnerar damage till en int parameter i main
@@ -80,7 +80,7 @@ namespace Slagsmål.Klasser
                 hp = 0;
             }
 
-            Console.WriteLine(name + " tog " + amount + " skada och har nu " + hp + "hp kvar."); //Hurt metoden skriver även ut hur mkt damage kämpen tog samt hur mkt hen har kvar
+            Console.WriteLine(name + " tog " + amount + " skada."); //Hurt metoden skriver även ut hur mkt damage kämpen tog samt hur mkt hen har kvar
         }
 
         public bool isAlive() //isAlive metoden checkar ifall spelaren är död genom att använda hp int:en
@@ -95,8 +95,10 @@ namespace Slagsmål.Klasser
             return Alive;
         }
         
-        public int GetHp()
+        public int GetHp() //GetHp skriver ut hp:et på spelaren och sedan returnerar det
         {
+            Console.WriteLine(name + " har nu " + hp + "hp kvar.");
+
             return hp;
         }
     }
